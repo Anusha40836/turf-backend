@@ -23,15 +23,16 @@ app.use("/api/bookings", bookingRoutes);
 const uploadRoutes = require("./routes/upload");
 app.use("/api/upload", uploadRoutes);
 
+const PORT = process.env.PORT || 5000;
 // MongoDB Connect
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(5000, () => console.log("Server started on port 5000"));
+    app.listen(PORT, () => console.log("Server started on port 5000"));
   })
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to Turf Kingdom 🛤️</h1>");
+  res.send("<h1>Welcome to Turf Booking Website 🛤️</h1>");
 });
